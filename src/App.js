@@ -5,6 +5,7 @@ import './App.css';
 import Landing from './formik/Landing';
 import Navigation from './Navigation';
 import FormikComponent from './formik/FormikComponent';
+import formikHocComponent from './formik/formikHocComponent';
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
               <div>
                 <Route path="/" exact component={Landing} />
                 <Route path="/formik" exact component={FormikComponent} />
+                <Route path="/withFormik" exact component={formikHocComponent} />
               </div>
             </div>
         </Router>
