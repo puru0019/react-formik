@@ -1,5 +1,4 @@
 import React from 'react';
-import { compose } from 'recompose';
 import { withFormik, Form, Field } from 'formik';
 import { Debug } from './Debug';
 import { Button, Row, Col } from 'react-bootstrap';
@@ -13,8 +12,6 @@ const formikEnhancer = withFormik({
 
 const formikHocComponent = (props) =>{
     const {
-        values,
-        errors,
         isSubmitting,
         handleReset,
         dirty
