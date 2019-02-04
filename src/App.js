@@ -8,6 +8,7 @@ import FormikComponent from './formik/FormikComponent';
 import formikHocComponent from './formik/formikHocComponent';
 import formikCustomValidation from './formik/formikCustomValidation';
 import formikFieldAndFormLevelValidation from './formik/formikFieldAndFormLevelValidation';
+import customFields from './formik/customFields';
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
                 <Route path="/withFormik" exact component={formikHocComponent} />
                 <Route path="/customValidation" exact component={formikCustomValidation} />
                 <Route path="/fieldFormLevel" exact component={formikFieldAndFormLevelValidation} />
+                <Route path="/customFields" exact component={customFields} />
               </div>
             </div>
         </Router>

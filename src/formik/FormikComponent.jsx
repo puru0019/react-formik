@@ -19,7 +19,7 @@ const FormikComponent = enhance(() => {
             }}
             >
                 {
-                    ({ isSubmitting, errors, dirty }) => 
+                    ({ isSubmitting, dirty }) => 
                     <div className="container">
                        <h3>Simple Formik</h3>
                        <Form>

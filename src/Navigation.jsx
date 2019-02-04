@@ -13,6 +13,7 @@ const Navigation = () => {
                         <Nav.Link href="/withFormik">withFormik</Nav.Link>
                         <Nav.Link href="/customValidation">Fromik Custom Validation</Nav.Link>
                         <Nav.Link href="/fieldFormLevel">Field and Form Level Validation</Nav.Link>
+                        <Nav.Link href="/customFields">Custom Fields(Validation using Yup)</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

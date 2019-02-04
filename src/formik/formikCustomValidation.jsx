@@ -54,7 +54,7 @@ const formikCustomValidation = (props) =>{
                                 }
                             </div>
                             <div className="form-group">
-                                <Field type="text" name="accept">
+                                <Field name="accept">
                                 {
                                     
                                     ({ field , form: { touched, errors }}) =>
