@@ -14,7 +14,7 @@ const formikHocComponent = (props) =>{
     const {
         isSubmitting,
         handleReset,
-        dirty
+        dirty,
     } = props;
 
     return (
