@@ -13,7 +13,7 @@ const enhance = compose(
     })
 );
 
-const formikRadio = enhance(({ 
+const formikRadioGroup = enhance(({ 
    field: { name },
    form,
    options,
@@ -27,7 +27,7 @@ const formikRadio = enhance(({
             {
                 options.map(({ label, value },key) =>
                 <div key={key} >
-                    <label htmlFor="color">
+                    <label>
                         <input 
                             type="radio"
                             value={value}
@@ -49,4 +49,4 @@ const formikRadio = enhance(({
      )
 });
 
-export default formikRadio;
+export default formikRadioGroup;

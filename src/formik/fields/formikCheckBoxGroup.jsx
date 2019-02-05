@@ -16,7 +16,7 @@ const enhance = compose(
     })
 );
 
-const formikCheckBox = enhance(({ 
+const formikCheckBoxGroup = enhance(({ 
    field: { name },
    form: { setFieldTouched, values },
    options,
@@ -29,7 +29,7 @@ const formikCheckBox = enhance(({
                 options.map(({ label, id },key) =>
                 
                 <div key={key} >
-                    <label htmlFor="colors">
+                    <label>
                         <input 
                             type="checkbox"
                             value={id}
@@ -51,4 +51,6 @@ const formikCheckBox = enhance(({
      )
 });
 
-export default formikCheckBox;
+
+
+export default formikCheckBoxGroup;

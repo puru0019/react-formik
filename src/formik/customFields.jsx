@@ -5,8 +5,8 @@ import { Debug } from './Debug';
 import { Button, Row, Col } from 'react-bootstrap';
 import formikSelect from './fields/formikSelect';
 import * as Yup from "yup";
-import formikRadio from './fields/formikRadio';
-import formikCheckBox from './fields/formikCheckBox';
+import formikRadioGroup from './fields/formikRadioGroup';
+import formikCheckBoxGroup from './fields/formikCheckBoxGroup';
 
 const options = [
     { value: 'Food', label: 'Food' },
@@ -89,8 +89,10 @@ const customFields = enhance(({ ...props }) =>{
                                     
                                     ({ field }) =>
                                     <div>
-                                        <input type="checkbox" checked={field.value} {...field} />
-                                        <label htmlFor={`${field.name}`}>Terms and conditions</label>
+                                         <label>
+                                            <input type="checkbox" checked={field.value} {...field} />
+                                            Terms and conditions
+                                        </label>
                                         <ErrorMessage name={`${field.name}`}>
                                             {
                                                 msg => <div style={{ color: 'red'}}>{msg}</div>
@@ -100,10 +102,10 @@ const customFields = enhance(({ ...props }) =>{
                                 }
                                 </Field>
                                 <Field name="topics" component={formikSelect} options={options} value={values.topics}/>
-                                <Field name="color" component={formikRadio} options={options1} /> 
-                                <Field name="colors" component={formikCheckBox} options={options2} />
+                                <Field name="color" component={formikRadioGroup} options={options1} /> 
+                                <Field name="colors" component={formikCheckBoxGroup} options={options2} />
                                 <Button color="success" type="submit" disabled={isSubmitting || !dirty} style={{marginRight:"10px", marginTop:"20px"}}>Submit</Button>
-                                <Button color="grey" disabled={isSubmitting || !dirty} onClick={handleReset} style={{marginRight:"10px", marginTop:"20px"}}>Reset</Button>
+                                <Button  disabled={isSubmitting || !dirty} onClick={handleReset} style={{marginRight:"10px", marginTop:"20px"}}>Reset</Button>
                             </div>
                         </Col>
                         <Col sm={6}>
