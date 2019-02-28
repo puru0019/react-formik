@@ -1,65 +1,78 @@
 import React from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Button, Row, Col } from 'react-bootstrap';
+import { Debug } from './Debug';
+import * as Yup from 'yup';
 
-function validateForm({ fname, email, lname }) {
-    return {
-        fname: !fname || fname.trim().length === 0 ? 'First name is required' : false,
-        email: !email || email.trim().length === 0 ? 'Email name is required' : false,
-        lname: !lname || lname.trim().length === 0 ? 'Last name is required' : false,
-    }
-}
+const validateFormikFields = Yup.object().shape({
+    email: Yup.string().email('Not Valid').required('Required'),
+    fname: Yup.string().min(2, 'To short').max(10, 'To Long').required('Required'),
+    lname: Yup.string().required('Required'),
+});
 
 class simpleForm extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            fname: 'gopi',
-            email: 'kr@gmail.com',
-            lname: 'raj',
+            fname: '',
+            email: '',
+            lname: '',
         }
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-    }
-    handleSubmit(e) {
-        e.preventDefault();
-        console.log(this.state);
-    }
-    handleChange(e) {
-        const { name, value } = e.target;
-        this.setState({
-            [name]: value,
-        });
     }
     
     render() {
-        const errors = validateForm(this.state);
+        
         return (
             <div className="container">
-                <form onSubmit={this.handleSubmit}>
+                <Formik
+                    initialValues = {{ ...this.state }}
+                    onSubmit = {
+                        (values, action) => {
+                            console.log(values,action)
+                            action.setSubmitting(false);
+                        }
+                    }
+                    validationSchema = {validateFormikFields}
+                >
+                {
+                    ({ isSubmitting, dirty }) =>
+                <Form onSubmit={this.handleSubmit}>
                 <Row>
                     <Col sm={4}>
                     <div className="form-group">
                     <label>Email</label>
-                    <input type="email" name="email" className="form-control" value={this.props.email} onChange={this.handleChange} />
-                    {
-                        errors && errors.email && <div style={{color:'red'}}>{errors.email}</div>
-                    }
+                    <Field type="email" name="email" className="form-control" />
+                    <ErrorMessage name="email">
+                     {
+                         msg => <div style={{color:'red'}}>{msg}</div>
+                     }
+                    </ErrorMessage>
                     <label>First Name</label>
-                    <input type="text" name="fname" className="form-control" value={this.props.fname} onChange={this.handleChange} />
-                    {
-                        errors && errors.fname && <div style={{color:'red'}}>{errors.fname}</div>
-                    }
+                    <Field type="text" name="fname" className="form-control" />
+                    <ErrorMessage name="fname">
+                     {
+                         msg => <div style={{color:'red'}}>{msg}</div>
+                     }
+                    </ErrorMessage>
                     <label>Last Name</label>
-                    <input type="text" name="lname" className="form-control" value={this.props.lname} onChange={this.handleChange} />
-                    {
-                        errors && errors.lname && <div style={{color:'red'}}>{errors.lname}</div>
-                    }
+                    <Field type="text" name="lname" className="form-control"  />
+                    <ErrorMessage name="lname">
+                     {
+                         msg => <div style={{color:'red'}}>{msg}</div>
+                     }
+                    </ErrorMessage>
                     <br/>
-                    <Button type="submit">Submit</Button>
+                    <Button type="submit" disabled={isSubmitting || !dirty}>Submit</Button>
+                    
                     </div>
                 </Col>
+                <Col sm={4}>
+                <Debug/>
+                </Col>
                 </Row>
-                </form>
+                </Form>
+                }
+                </Formik>
             </div>
         )
     }
