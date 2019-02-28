@@ -13,9 +13,9 @@ class simpleForm extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            fname: '',
-            email: '',
-            lname: '',
+            fname: 'gopi',
+            email: 'kr@gmail.com',
+            lname: 'raj',
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -27,39 +27,40 @@ class simpleForm extends React.Component {
     handleChange(e) {
         const { name, value } = e.target;
         this.setState({
-            [name]: value
+            [name]: value,
         });
     }
     
     render() {
         const errors = validateForm(this.state);
         return (
-            <React.Fragment>
+            <div className="container">
                 <form onSubmit={this.handleSubmit}>
                 <Row>
-                    <Col sm={3}>
+                    <Col sm={4}>
                     <div className="form-group">
                     <label>Email</label>
                     <input type="email" name="email" className="form-control" value={this.props.email} onChange={this.handleChange} />
                     {
-                        errors && errors.email && <div>{errors.email}</div>
+                        errors && errors.email && <div style={{color:'red'}}>{errors.email}</div>
                     }
                     <label>First Name</label>
                     <input type="text" name="fname" className="form-control" value={this.props.fname} onChange={this.handleChange} />
                     {
-                        errors && errors.fname && <div>{errors.fname}</div>
+                        errors && errors.fname && <div style={{color:'red'}}>{errors.fname}</div>
                     }
                     <label>Last Name</label>
                     <input type="text" name="lname" className="form-control" value={this.props.lname} onChange={this.handleChange} />
                     {
-                        errors && errors.lname && <div>{errors.lname}</div>
+                        errors && errors.lname && <div style={{color:'red'}}>{errors.lname}</div>
                     }
+                    <br/>
                     <Button type="submit">Submit</Button>
                     </div>
                 </Col>
                 </Row>
                 </form>
-            </React.Fragment>
+            </div>
         )
     }
 }

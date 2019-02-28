@@ -24,7 +24,7 @@ const formikEnhancer = withFormik({
         console.log(action);
         if(values.username === "user") {
             action.setFieldError("username", "Please enter another name");
-            action.setFieldValue("username", "admin1", true);
+            //action.setFieldValue("username", "admin1", true);
         }
         action.setSubmitting(false);
     }

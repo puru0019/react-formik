@@ -20,7 +20,7 @@ class App extends Component {
               <Navigation/>
               <div>
                 <Route path="/" exact component={Landing} />
-                {/* <Route path="/simpleForms" exact component={simpleForms} /> */}
+                <Route path="/simpleForms" exact component={simpleForms} />
                 <Route path="/formik" exact component={FormikComponent} />
                 <Route path="/withFormik" exact component={formikHocComponent} />
                 <Route path="/customValidation" exact component={formikCustomValidation} />

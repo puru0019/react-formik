@@ -9,7 +9,7 @@ const Navigation = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        {/* <Nav.Link href="/simpleForms">Simple Forms</Nav.Link> */}
+                        <Nav.Link href="/simpleForms">Simple Forms</Nav.Link>
                         <Nav.Link href="/formik">Fromik</Nav.Link>
                         <Nav.Link href="/withFormik">withFormik</Nav.Link>
                         <Nav.Link href="/customValidation">Fromik Custom Validation</Nav.Link>
